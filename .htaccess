@@ -1,0 +1,9 @@
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin *
+  Header set Access-Control-Allow-Methods GET,PUT,POST,DELETE,OPTIONS
+  Header append Access-Control-Allow-Headers Origin, Content-Type, X-Auth-Token, Authorization
+</IfModule>
+
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule (.*) /public/$1
