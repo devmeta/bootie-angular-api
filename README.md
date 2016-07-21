@@ -1,1 +1,25 @@
-![Alt text](https://bytebucket.org/MartinFrith/radarzone_rest/raw/f8e761de8871e0e5e510da538e940c32840b17ab/public/assets/pad_se1_p1_img_1.png?token=dad19509e31d565cdfb4e6951cb7c2d9e7c25c64)
+# AngularJS + Bootie PHP7 API
+
+You can see it online [here](http://bootie-angularjs.devmeta.net)
+
+## Installation
+
+### Composer
+
+```
+composer install
+```
+
+### Config
+
+```
+mv ./config/config.sample.php config.php
+nano ./config/config.php
+```
+
+### Folder Permission
+
+```
+sudo chmod -R 777 ./storage
+```
+
