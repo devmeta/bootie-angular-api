@@ -95,8 +95,7 @@ class BlogController extends \Controller\BaseController  {
 			]);
 
 			$wheres = [
-				'id IN(' . implode(',',array_unique($posts_id)) . ')',
-				'privacy_id' => 1
+				'id IN(' . implode(',',array_unique($posts_id)) . ')'
 			];
 
 			if(count($where)) $wheres[] = implode(' AND ', $where);

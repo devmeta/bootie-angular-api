@@ -19,7 +19,7 @@ $migration->db = $db;
 $migration->name = 'default';
 
 // Load table configuration
-$migration->tables  = config('Migration');
+$migration->tables  = config('migration');
 
 // Backup existing database table
 $migration->backup_data();

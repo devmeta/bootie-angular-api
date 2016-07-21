@@ -25,11 +25,17 @@ You can see it online [here](http://bootie-angularjs.devmeta.net)
 composer install
 ```
 
+### Create database
+```
+mysql > CREATE DATABASE bootieng;
+```
+
 ### Import database
 
 ```
 cd /path/to/project
-zcat ./config/bootieng.sql.gz | mysql -u root -p bootieng
+php cli create
+php cli restore
 ```
 
 ### Config
