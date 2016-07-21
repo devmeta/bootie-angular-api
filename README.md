@@ -28,6 +28,7 @@ nano ./config/config.php
 
 ```
 sudo chmod -R 777 ./storage
+sudo chmod -R 777 ./public/upload
 ```
 
 ## Panel access
