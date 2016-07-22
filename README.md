@@ -37,6 +37,13 @@ sudo chmod -R 777 ./storage ./public/upload
 mysql > CREATE DATABASE bootieng;
 ```
 
+### Config
+
+```
+mv ./config/config.sample.php ./config/config.php
+nano ./config/config.php
+```
+
 ### Import database
 
 ```
@@ -44,15 +51,6 @@ cd /path/to/project
 php cli create
 php cli restore
 ```
-
-### Config
-
-```
-mv ./config/config.sample.php config.php
-nano ./config/config.php
-```
-
-
 
 ## Panel access
 
