@@ -71,4 +71,4 @@ tags_relation
 {"id":"72","post_id":"14","user_id":"0","tag_id":"2","created":null,"updated":null}
 {"id":"74","post_id":"15","user_id":"0","tag_id":"2","created":null,"updated":null}
 users
-{"id":"1","role_id":"1","group_id":"1","lang":"es","login":"admin","pass":"$2a$10$88532d228dc2a13d73dc3OZi7PbokBclnrf.AwPS1iI.GYNIEhHaa","name":"Administrator","phone":null,"email":"admin@project.net","address":null,"city":null,"caption":"0000-00-00 00:00:00","status":"1","created":"127","updated":null}
+{"id":"1","role_id":"1","group_id":"1","lang":"es","login":"admin","pass":"$2a$10$88532d228dc2a13d73dc3OZi7PbokBclnrf.AwPS1iI.GYNIEhHaa","name":"Administrator","phone":null,"email":"admin@project.net","address":null,"city":null,"caption":"","status":"1","created":"127","updated":null}

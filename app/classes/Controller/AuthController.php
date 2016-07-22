@@ -4,30 +4,25 @@ class AuthController extends \Controller\BaseController {
 
 	static private function authenticate($user,$remember = false){
 
-
 		$ip = get_client_ip();
-
-
 		$iat = time();
 		$timeout = 60 * 60 * 24 * 7; // 1 week
 		$nbf = $iat + 1;
 		$exp = $nbf + $timeout;
-		$role = $user->role->slug?:'default';
-		$group = $user->group->title?:'default';
 
         $jwt = [
         	'iat' => $iat,
         	'nbf' => $nbf,
         	'exp' => $exp,
         	'data' => [
-		        'name' => $user->title,
-		        'login' => $user->login,
 		        'uid' => $user->id,
 		        'uip' => $ip,
-		        'role' => $role,
-		        'group_id' => $user->group->id,
-		        'group' => $group,
+		        'name' => $user->name,
+		        'login' => $user->login,
 		        'email' => $user->email,
+		        'role' => $user->role->slug?:'default',
+		        'group_id' => $user->group->id,
+		        'group' => $user->group->title?:'default',
 		        'created' => $user->created,
 		        'session_count' => $user->session->count(),
 		        'session_exp' => date('Y M j H:i',$exp),
@@ -37,7 +32,6 @@ class AuthController extends \Controller\BaseController {
 
         $token = \Firebase\JWT\JWT::encode($jwt, config()->jwtKey);
         $jwt['token'] = $token;
-
 
         // update db session 
         $session = new \Model\Session;
@@ -60,7 +54,7 @@ class AuthController extends \Controller\BaseController {
 		$remember = !empty($data->customer->remember)?$data->customer->remember:false;
 
 	    $user = \Model\User::row([
-	    	"login='$email' or email='$email'"
+	    	"email='$email' or login='$email' or phone='$email'"
 	    ]);
 
 	    if ($user != NULL) {
@@ -82,38 +76,45 @@ class AuthController extends \Controller\BaseController {
 	    return  \Bootie\App::json($response);
 	}
 
-	public static function signup(){
+	public static function register(){
 		$request_body = file_get_contents('php://input');
-		$data = json_decode($request_body);
+		$customer = json_decode($request_body);
+		$data = $customer->customer;
 
-	    $isUserExists = \Model\User::row(
-	    	"phone='$data->customer->phone' or email='$data->customer->email'"
-	    );
+	    $isUserExists = \Model\User::row([
+	    	"login='$data->login' or phone='$data->phone' or email='$data->email'"
+	    ]);
 
 	    if(!$isUserExists){
 
-	        $password = \Bootie\Hasher::hash($password);
-	        $column_names = array('phone', 'name', 'email', 'password', 'city', 'address');
+	        $data->pass = \Bootie\Hasher::hash($data->pass);
+	        $column_names = array('login', 'email', 'pass', 'phone', 'name', 'city', 'address');
 
-	        $row = new \model\User;
+	        $user = new \model\User;
+	        $user->role_id = 2;
+	        $user->group_id = 2;
+	        $user->created = TIME;
 
 	        foreach($column_names as $col){
-	        	$row->{$col} = $data->customer->{$col};
+	        	if(isset($data->{$col})){
+	        		$user->{$col} = $data->{$col};
+	        	}
 	        }
 
-	        $result = $row->save(1);
+	        if ($user->save(1)) {
 
-	        if ($result != NULL) {
 	            $response["status"] = "success";
 	            $response["message"] = "La cuenta ha sido creada exitosamente";
-
 		        $response['auth'] = self::authenticate($user);
 
 				return \Bootie\App::json($response);
 	        } else {
+
 	            $response["status"] = "error";
 	            $response["message"] = "El registro ha fallado: Por favor vuelva a intentar.";
+
 	            return \Bootie\App::json($response);
+
 	        }            
 	    } else {
 	        $response["status"] = "error";

@@ -6,7 +6,7 @@ App::route('/',                       ['uses' => 'Controller\ApiController@index
 App::route('/v1/landing',             ['uses' => 'Controller\HomeController@index']);
 App::route('/v1/logout',              ['uses' => 'Controller\AuthController@logout']);
 App::route('/v1/login',               ['uses' => 'Controller\AuthController@login',   'method' => 'post']);
-App::route('/v1/signup',              ['uses' => 'Controller\AuthController@signup',  'method' => 'post']);
+App::route('/v1/register',              ['uses' => 'Controller\AuthController@register',  'method' => 'post']);
 App::route('/v1/packs',               ['uses' => 'Controller\PackController@index']);
 App::route('/v1/packs/([^/]+)',       ['uses' => 'Controller\PackController@show']);
 App::route('/v1/blog/([^/]+)',        ['uses' => 'Controller\BlogController@show']);
