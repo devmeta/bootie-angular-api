@@ -24,16 +24,16 @@ $config = [
 		'status' => ['type' => 'tinyint', 'length' => 1],
 		'file_size' => ['type' => 'integer'],
 		'position' => ['type' => 'smallint', 'length' => 6],
-		'created' => ['type' => 'integer', 'length' => 14],
-		'updated' => ['type' => 'integer', 'length' => 14],
+		'created' => ['type' => 'integer'],
+		'updated' => ['type' => 'integer'],
 	],
 	'groups' => [
 		'id' => ['type' => 'primary'],
 		'title' => ['type' => 'string', 'length' => 50],
 		'caption' => ['type' => 'string'],
 		'slug' => ['type' => 'string', 'length' => 50],
-		'created' => ['type' => 'integer', 'length' => 14],
-		'updated' => ['type' => 'integer', 'length' => 14],
+		'created' => ['type' => 'integer'],
+		'updated' => ['type' => 'integer'],
 	],	
 	'packs' => [
 		'id' => ['type' => 'primary'],
@@ -45,8 +45,8 @@ $config = [
 		'typcn' => ['type' => 'string', 'length' => 50],
 		'price' => ['type' => 'integer', 'length' => 10],
 		'color' => ['type' => 'string', 'length' => 20],
-		'created' => ['type' => 'integer', 'length' => 14],
-		'updated' => ['type' => 'integer', 'length' => 14],
+		'created' => ['type' => 'integer'],
+		'updated' => ['type' => 'integer'],
 	],	
 	'posts' => [
 		'id' => ['type' => 'primary'],
@@ -56,22 +56,23 @@ $config = [
 		'position' => ['type' => 'integer', 'length' => 1],
 		'caption' => ['type' => 'string', 'length' => 510],
 		'content' => ['type' => 'string'],
-		'created' => ['type' => 'integer', 'length' => 14],
-		'updated' => ['type' => 'integer', 'length' => 14],		
+		'created' => ['type' => 'integer'],
+		'updated' => ['type' => 'integer'],		
 	],	
 	'roles' => [
 		'id' => ['type' => 'primary'],
 		'title' => ['type' => 'string', 'length' => 255],
 		'slug' => ['type' => 'string', 'length' => 255],
 		'caption' => ['type' => 'string', 'length' => 510],
-		'created' => ['type' => 'integer', 'length' => 14],
-		'updated' => ['type' => 'integer', 'length' => 14],		
+		'created' => ['type' => 'integer'],
+		'updated' => ['type' => 'integer'],		
 	],	
 	'session' => [
+		'id' => ['type' => 'primary'],	
 		'token' => ['type' => 'string'],
 		'user_id' => ['type' => 'integer', 'length' => 11],
 		'ip' => ['type' => 'string', 'length' => 50],
-		'created' => ['type' => 'integer', 'length' => 14],
+		'created' => ['type' => 'integer'],
 	],
 	'tags' => [
 		'id' => ['type' => 'primary'],
@@ -103,7 +104,7 @@ $config = [
 		'city' => ['type' => 'string', 'length' => 50],
 		'caption' => ['type' => 'text'],
 		'status' => ['type' => 'integer', 'length' => 6],
-		'created' => ['type' => 'integer', 'length' => 14],
-		'updated' => ['type' => 'integer', 'length' => 14]
+		'created' => ['type' => 'integer'],
+		'updated' => ['type' => 'integer']
 	]
 ];

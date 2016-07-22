@@ -36,11 +36,10 @@ class UserController extends \Controller\BaseController {
 			if( $entry )
 			{
 
-				$title = $entry->title;
 				$entry->delete();
 
 				return redirect('/admin/users',[
-					'success' => "Entry <strong>{$title}</strong> has been deleted"
+					'success' => "Entry has been deleted"
 				]);
 			}
 		}

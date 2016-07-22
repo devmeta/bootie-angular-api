@@ -19,7 +19,7 @@ class PostController extends \Controller\BaseController {
 			}
 
 			$rows[$i] = $row->data;
-			$rows[$i]['author'] = $row->user->title;
+			$rows[$i]['author'] = $row->user->name;
 			$rows[$i]['wcount'] = str_word_count($row->content);
 			$rows[$i]['files'] = $files;
 			$rows[$i]['tags'] = count($row->post_tags());
@@ -60,7 +60,6 @@ class PostController extends \Controller\BaseController {
 					])->delete();
 				}
 
-				$title = $entry->title;
 				$entry->delete();
 
 		        $response["status"] = "success";
