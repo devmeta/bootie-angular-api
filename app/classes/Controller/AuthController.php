@@ -93,7 +93,7 @@ class AuthController extends \Controller\BaseController {
 	        $user = new \model\User;
 	        $user->role_id = 2;
 	        $user->group_id = 2;
-	        $user->created = TIME;
+	        $user->created = TIME; 
 
 	        foreach($column_names as $col){
 	        	if(isset($data->{$col})){
