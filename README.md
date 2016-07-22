@@ -25,6 +25,13 @@ You can see it online [here](http://bootie-angularjs.devmeta.net)
 composer install
 ```
 
+### Folder Permission
+
+```
+cd /path/to/project
+sudo chmod -R 777 ./storage ./public/upload
+```
+
 ### Create database
 ```
 mysql > CREATE DATABASE bootieng;
@@ -45,12 +52,7 @@ mv ./config/config.sample.php config.php
 nano ./config/config.php
 ```
 
-### Folder Permission
 
-```
-sudo chmod -R 777 ./storage
-sudo chmod -R 777 ./public/upload
-```
 
 ## Panel access
 
