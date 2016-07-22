@@ -60,18 +60,18 @@ class AuthController extends \Controller\BaseController {
 	    if ($user != NULL) {
 	        if(\Bootie\Hasher::check_password($user->pass,$password)){
 		        $response['status'] = "success";
-		        $response['message'] = 'Has iniciado sesión de forma exitosa';
+		        $response['message'] = 'Session successfully created';
 		        $response['auth'] = self::authenticate($user,$remember);
 
 				return \Bootie\App::json($response);
 
 	        } else {
 	            $response['status'] = "error";
-	            $response['message'] = 'El ingreso ha fallado: La credencial es incorrecta.';
+	            $response['message'] = 'Signin failed: Invalid credential.';
 	        }
 	    } else {
 	        $response['status'] = "error";
-	        $response['message'] = 'El ingreso ha fallado: No existe tal usuario';
+	        $response['message'] = 'Signin failed: No such a user.';
 	    }
 	    return  \Bootie\App::json($response);
 	}
@@ -104,28 +104,28 @@ class AuthController extends \Controller\BaseController {
 	        if ($user->save(1)) {
 
 	            $response["status"] = "success";
-	            $response["message"] = "La cuenta ha sido creada exitosamente";
+	            $response["message"] = "Account successfully created";
 		        $response['auth'] = self::authenticate($user);
 
 				return \Bootie\App::json($response);
 	        } else {
 
 	            $response["status"] = "error";
-	            $response["message"] = "El registro ha fallado: Por favor vuelva a intentar.";
+	            $response["message"] = "Signup failed: Please try again.";
 
 	            return \Bootie\App::json($response);
 
 	        }            
 	    } else {
 	        $response["status"] = "error";
-	        $response["message"] = "El registro ha fallado: Ya existe un usuario con ese telefono o email!";
+	        $response["message"] = "Signup failed: A user already exists with the same login, phone or email!";
 	        return \Bootie\App::json($response);
 	    }
 	}
 	
 	public static function logout() {
 	    $response["status"] = "info";
-	    $response["message"] = "Has finalizado sesión exitosamente.";
+	    $response["message"] = "Your session's over.";
 		return \Bootie\App::json($response);	
 	}
 
